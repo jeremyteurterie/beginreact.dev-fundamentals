@@ -22,20 +22,38 @@
   <script type="text/babel">
     // 🦁 Remplace tout ceci par du JSX !
     // 💡 <button id=...
-    const startButton = React.createElement(
-      'button',
-      {
-        id: 'start',
-        onClick: () => {
-          alert('Le bouton start à été cliqué !');
-        },
-      },
-      'Start'
+    const startButton = (
+      <button
+        id="start"
+        onClick={() => {
+          alert('Le bouton start a ete clique!');
+        }}
+      >
+        Start
+      </button>
     );
+
+    const Message = ({ author, children }) => {
+      return (
+        <p>
+          <b>
+            {author} : {children}
+          </b>
+        </p>
+      );
+    };
 
     // 🦁 Remplace tout ceci par du JSX !
     // 💡 <div>...
-    const elements = React.createElement('div', null, startButton);
+    const elements = (
+      <div>
+        {startButton}
+        <Message author="Jean">Hello!</Message>
+        <h2>{Math.random()}</h2>
+        <p>{112 + 4}</p>
+        <span>{new Date().toDateString()}</span>
+      </div>
+    );
 
     const root = ReactDOM.createRoot(document.querySelector('#root'));
     root.render(elements);
