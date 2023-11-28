@@ -20,11 +20,43 @@
   <script>
     // 🦁 Crée un button avec comme id "start" et comme text à l'intérieur "Start !"
     // 🦁 Ajoute une événement "onClick" à notre button qui affiche une alert.
+    const fruits = ['pomme', 'poire', 'fraise', 'cerise'];
 
+    const fruitsItems = fruits.map((fruit) => {
+      return React.createElement('li', null, fruit);
+    });
+
+    const fruitsList = React.createElement('ul', null, fruitsItems);
+
+    const startButton = React.createElement(
+      'button',
+      {
+        onClick: () => {
+          alert('Le bouton start à été cliqué!');
+        },
+        id: 'start',
+      },
+      'Start!'
+    );
     // 🦁 Crée une div : "elements" avec à l'intérieur le bouton.
+    const buttonContainer = React.createElement(
+      'div',
+      null,
+      startButton,
+      React.createElement('button', null, 'Stop')
+    );
+
+    const elements = React.createElement(
+      'div',
+      null,
+      React.createElement('h1', null, 'Lance la partie!'),
+      buttonContainer,
+      fruitsList
+    );
 
     const container = document.querySelector('#root');
-    const root = undefined; // 🦁 Remplace `undefined` by `ReactDOM.createRoot(container);`
+    const root = ReactDOM.createRoot(container);
     // 🦁 Utilise `root.render` pour afficher la div "elements"
+    root.render(elements);
   </script>
 </html>
